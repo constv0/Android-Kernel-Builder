@@ -2,7 +2,7 @@
 {
   "kernelSource": {
     "name": "UI4.0-KernelSU-GTNeo_Dimensity_1200_Series",
-    "repo": "https://github.com/constv0/kernel_realme_RMX3031/tree/T-Backup",
+    "repo": "https://github.com/constv0/kernel_realme_RMX3031.git",
     "branch": "T-Backup",
     "device": "cupida",
     "defconfig": "cupida_defconfig"
