@@ -134,6 +134,7 @@ jobs:
                   echo "unknown file type: $filename"
                   ;;
               esac
+              rm -rf $toolchain_name/proton-clang-20210522/bin/ld
             fi
 
             jq -r ".[$i].binPath[] | tostring" <<< "$toolchains" | while read -r bin_path; do
