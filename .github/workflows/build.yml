@@ -150,7 +150,8 @@ jobs:
           THREAD: $(nproc --all)
         run: |
           echo "🤔 PATH Variable: $PATH"
-          rm -rf /home/runner/work/Android-Kernel-Builder/Android-Kernel-Builder/proton-clang/proton-clang-20210522/bin/ld
+          pwd
+          ls ../
           ARCH=$(echo $params | jq -r ".ARCH")
           CC=$(echo $params | jq -r ".CC")
 
