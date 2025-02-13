@@ -38,8 +38,8 @@ jobs:
     - name: Setup Configuration for Kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/kernel_realme_RMX3031
-        echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/vendor/sm8250_defconfig
-        echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/vendor/sm8250_defconfig
+        echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/cupida_defconfig
+        echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/cupida_defconfig
 
     - name: Setup ccache
       uses: hendrikmuhs/ccache-action@v1.2
@@ -51,7 +51,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/kernel_realme_RMX3031
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang/bin:$PATH
-        make -j$(nproc --all) CROSS_COMPILE=aarch64-linux-gnu- CC=clang O=out ARCH=arm64 vendor/sm8250_defconfig
+        make -j$(nproc --all) CROSS_COMPILE=aarch64-linux-gnu- CC=clang O=out ARCH=arm64 cupida_defconfig
         make -j$(nproc --all) CROSS_COMPILE=aarch64-linux-gnu- CC="ccache clang" O=out ARCH=arm64
 
     - name: Make Anykernel3
