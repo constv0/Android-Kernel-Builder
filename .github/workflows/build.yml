@@ -28,12 +28,12 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/Blackmanx/kernel_realme_sm8250 -b bigshot-AOSP android-kernel --depth=1
+        git clone https://github.com/constv0/kernel_realme_RMX3031.git
 
     - name: Setup KernelSU
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-        curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
+        curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
 
     - name: Setup Configuration for Kernel
       run: |
