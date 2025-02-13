@@ -32,12 +32,12 @@ jobs:
 
     - name: Setup KernelSU
       run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+        cd $GITHUB_WORKSPACE/kernel_workspace/kernel_realme_RMX3031
         curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
 
     - name: Setup Configuration for Kernel
       run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+        cd $GITHUB_WORKSPACE/kernel_workspace/kernel_realme_RMX3031
         echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/vendor/sm8250_defconfig
         echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/vendor/sm8250_defconfig
 
@@ -49,7 +49,7 @@ jobs:
 
     - name: Build kernel
       run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+        cd $GITHUB_WORKSPACE/kernel_workspace/kernel_realme_RMX3031
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang/bin:$PATH
         make -j$(nproc --all) CROSS_COMPILE=aarch64-linux-gnu- CC=clang O=out ARCH=arm64 vendor/sm8250_defconfig
         make -j$(nproc --all) CROSS_COMPILE=aarch64-linux-gnu- CC="ccache clang" O=out ARCH=arm64
@@ -61,14 +61,14 @@ jobs:
         sed -i 's/do.devicecheck=1/do.devicecheck=0/g' AnyKernel3/anykernel.sh
         sed -i 's!block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;!block=auto;!g' AnyKernel3/anykernel.sh
         sed -i 's/is_slot_device=0;/is_slot_device=auto;/g' AnyKernel3/anykernel.sh
-        cp android-kernel/out/arch/arm64/boot/Image AnyKernel3/
+        cp kernel_realme_RMX3031/out/arch/arm64/boot/Image AnyKernel3/
         rm -rf AnyKernel3/.git* AnyKernel3/README.md
 
     - name: Upload Image
       uses: actions/upload-artifact@v4
       with:
         name: Image-KernelSU-${{ env.BUILD_TIME }}
-        path: kernel_workspace/android-kernel/out/arch/arm64/boot/Image
+        path: kernel_workspace/kernel_realme_RMX3031/out/arch/arm64/boot/Image
 
     - name: Upload AnyKernel3
       uses: actions/upload-artifact@v4
