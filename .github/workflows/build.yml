@@ -138,7 +138,7 @@ jobs:
             fi
 
             jq -r ".[$i].binPath[] | tostring" <<< "$toolchains" | while read -r bin_path; do
-            rm -rf $toolchain_name/proton-clang/bin/ld
+
               echo "$WORKSPACE/$toolchain_name/$bin_path" >> $GITHUB_PATH
             done
           done
@@ -150,7 +150,7 @@ jobs:
           THREAD: $(nproc --all)
         run: |
           echo "🤔 PATH Variable: $PATH"
-
+          rm -rf /home/runner/work/Android-Kernel-Builder/Android-Kernel-Builder/proton-clang/proton-clang-20210522/bin/ld
           ARCH=$(echo $params | jq -r ".ARCH")
           CC=$(echo $params | jq -r ".CC")
 
