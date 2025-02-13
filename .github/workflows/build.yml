@@ -138,7 +138,7 @@ jobs:
             fi
 
             jq -r ".[$i].binPath[] | tostring" <<< "$toolchains" | while read -r bin_path; do
-            rm -rf $toolchain_name/proton-clang-20210522/bin/ld
+            rm -rf $toolchain_name/proton-clang/bin/ld
               echo "$WORKSPACE/$toolchain_name/$bin_path" >> $GITHUB_PATH
             done
           done
