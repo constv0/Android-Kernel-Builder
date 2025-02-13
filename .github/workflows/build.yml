@@ -151,7 +151,8 @@ jobs:
         run: |
           echo "🤔 PATH Variable: $PATH"
           pwd
-          ls ../
+          ls 
+          rm -rf proton-clang/bin/ld
           ARCH=$(echo $params | jq -r ".ARCH")
           CC=$(echo $params | jq -r ".CC")
 
