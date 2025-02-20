@@ -31,7 +31,7 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/cupid-development/android_kernel_xiaomi_sm8450.git
+        git clone https://github.com/ztc1997/android_gki_kernel_5.10_common.git
 
     - name: Setup KernelSU
       run: |
