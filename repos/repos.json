@@ -2,8 +2,8 @@
 {
   "kernelSource": {
     "name": "KernelSU-GTNeo_Dimensity_1200_Series",
-    "repo": "https://github.com/constv0/kernel_realme_RMX3031",
-    "branch": "T-Backup",
+    "repo": "https://github.com/zzh-zzh-zzh/android_gki_kernel_5.10_common.git",
+    "branch": "android12-5.10",
     "device": "cupida",
     "defconfig": "cupida_defconfig"
   },
