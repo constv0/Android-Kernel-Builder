@@ -31,16 +31,16 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/constv0/kernel_realme_RMX3031.git
+        git clone https://github.com/cupid-development/android_kernel_xiaomi_sm8450.git
 
     - name: Setup KernelSU
       run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace/kernel_realme_RMX3031
-        curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
+        cd $GITHUB_WORKSPACE/kernel_workspace/lineage-22.1
+        curl -LSs "https://raw.githubusercontent.com/5ec1cff/KernelSU/refs/heads/main/kernel/setup.sh" | bash -s main
 
     - name: Setup Configuration for Kernel
       run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace/kernel_realme_RMX3031
+        cd $GITHUB_WORKSPACE/kernel_workspace/android_kernel_xiaomi_sm8450
         echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/cupida_defconfig
         echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/cupida_defconfig
 
@@ -52,9 +52,9 @@ jobs:
 
     - name: Build kernel
       run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace/kernel_realme_RMX3031
+        cd $GITHUB_WORKSPACE/kernel_workspace/android_kernel_xiaomi_sm8450
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang/bin:$PATH
-        make -j$(nproc --all) CROSS_COMPILE=aarch64-linux-gnu- CC=clang O=out ARCH=arm64 cupida_defconfig
+        make -j$(nproc --all) CROSS_COMPILE=aarch64-linux-gnu- CC=clang O=out ARCH=arm64 gki_defconfig
         make -j$(nproc --all) CROSS_COMPILE=aarch64-linux-gnu- CC="ccache clang" O=out ARCH=arm64
 
     - name: Make Anykernel3
@@ -71,7 +71,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Image-KernelSU-${{ env.BUILD_TIME }}
-        path: kernel_workspace/kernel_realme_RMX3031/out/arch/arm64/boot/Image
+        path: kernel_workspace/android_kernel_xiaomi_sm8450/out/arch/arm64/boot/Image
 
     - name: Upload AnyKernel3
       uses: actions/upload-artifact@v4
