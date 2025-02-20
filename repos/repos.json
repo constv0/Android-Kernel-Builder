@@ -4,8 +4,8 @@
     "name": "KernelSU-GTNeo_Dimensity_1200_Series",
     "repo": "https://github.com/zzh-zzh-zzh/android_gki_kernel_5.10_common.git",
     "branch": "android12-5.10",
-    "device": "cupida",
-    "defconfig": "cupida_defconfig"
+    "device": "gki",
+    "defconfig": "gki_defconfig"
   },
   "withKernelSU": true,
   "toolchains": [
