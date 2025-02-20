@@ -35,7 +35,7 @@ jobs:
 
     - name: Setup KernelSU
       run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace/lineage-22.1
+        cd $GITHUB_WORKSPACE/kernel_workspace/android_kernel_xiaomi_sm8450
         curl -LSs "https://raw.githubusercontent.com/5ec1cff/KernelSU/refs/heads/main/kernel/setup.sh" | bash -s main
 
     - name: Setup Configuration for Kernel
